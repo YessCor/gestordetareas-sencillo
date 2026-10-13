@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestor de Tareas — Docker Multicapa</title>
+  <meta name="description" content="Aplicación de gestión de tareas desplegada con Docker Compose: nginx, Flask y MySQL." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="bg-blur bg-blur--1"></div>
+  <div class="bg-blur bg-blur--2"></div>
+
+  <div class="container">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header__logo">
+        <span class="header__icon">📋</span>
+        <div>
+          <h1 class="header__title">Gestor de Tareas</h1>
+          <p class="header__subtitle">Solución multicapa · Docker Compose</p>
+        </div>
+      </div>
+      <div id="statusBadge" class="badge badge--loading">Conectando…</div>
+    </header>
+
+    <!-- Add task form -->
+    <section class="card form-card" aria-label="Agregar tarea">
+      <h2 class="sr-only">Nueva tarea</h2>
+      <form id="formTarea" class="form">
+        <input
+          id="inputTitulo"
+          class="form__input"
+          type="text"
+          placeholder="¿Qué necesitas hacer?"
+          maxlength="200"
+          autocomplete="off"
+          aria-label="Título de la nueva tarea"
+          required
+        />
+        <button id="btnAgregar" class="btn btn--primary" type="submit">
+          <span class="btn__icon">+</span>
+          Agregar
+        </button>
+      </form>
+    </section>
+
+    <!-- Stats bar -->
+    <div class="stats" id="statsBar" aria-live="polite">
+      <span id="statTotal">0 tareas</span>
+      <span class="stats__sep">·</span>
+      <span id="statPendientes">0 pendientes</span>
+      <span class="stats__sep">·</span>
+      <span id="statCompletadas">0 completadas</span>
+    </div>
+
+    <!-- Task list -->
+    <section class="card list-card" aria-label="Lista de tareas">
+      <div id="listaTareas" class="task-list">
+        <div class="empty-state" id="emptyState">
+          <span class="empty-state__icon">🗂️</span>
+          <p>Aún no hay tareas. ¡Crea la primera!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Taller 7.3 · Contenerización de una solución multicapa</p>
+      <p class="footer__stack">
+        <span class="tech-tag">🐍 Flask</span>
+        <span class="tech-tag">🐬 MySQL</span>
+        <span class="tech-tag">🌐 nginx</span>
+        <span class="tech-tag">🐳 Docker</span>
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" aria-live="assertive" role="alert"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
